@@ -1,0 +1,17 @@
+.cardPicture {
+    width: 100%;
+    height: 300px;
+    background-color: #555555;
+    position: relative;
+    border-radius: 15px;
+
+    .pictureInfo {
+        background-color: rgba(255, 255, 255, 0.75);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 0 0 15px 15px;
+        padding: 2px 15px;
+    }
+}

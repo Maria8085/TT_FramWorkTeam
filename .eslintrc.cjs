@@ -1,15 +1,37 @@
 /* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution')
+require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
-  'extends': [
+  extends: [
     'plugin:vue/vue3-essential',
+    '@vue/eslint-config-airbnb',
     'eslint:recommended',
     '@vue/eslint-config-typescript',
-    '@vue/eslint-config-prettier/skip-formatting'
+    '@vue/eslint-config-prettier/skip-formatting',
+    'plugin:prettier/recommended'
   ],
   parserOptions: {
     ecmaVersion: 'latest'
-  }
-}
+  },
+  rules: {
+    semi: ['error', 'always'],
+    quotes: ['error', 'single'],
+    'no-plusplus': 'off',
+    'prettier/prettier': [
+      'error',
+      {},
+      {
+        fileInfoOptions: {
+          withNodeModules: true
+        }
+      }
+    ],
+    "import/no-unresolved": "error",
+  },
+  settings: {
+    ...createAliasSetting({
+      "@": `${path.resolve(__dirname, "./src")}`,
+    }),
+  },
+};
