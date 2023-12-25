@@ -4,7 +4,7 @@ import BaseFilter from '@/components/ui/BaseFilter/BaseFilter.vue';
 </script>
 
 <template>
-  <div :class="Styles.filters">
+  <div :class="Styles.filterList">
     <BaseFilter />
     <BaseFilter />
     <BaseFilter />

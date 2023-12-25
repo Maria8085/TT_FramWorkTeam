@@ -1,9 +1,10 @@
 .cardPicture {
-    width: 100%;
-    height: 300px;
-    background-color: #555555;
+    width: 360px;
+    height: 275px;
+    background-color: #777777;
     position: relative;
-    border-radius: 15px;
+    border-radius: 25px;
+    overflow: hidden;
 
     .pictureInfo {
         background-color: rgba(255, 255, 255, 0.75);
@@ -11,7 +12,23 @@
         left: 0;
         right: 0;
         bottom: 0;
-        border-radius: 0 0 15px 15px;
-        padding: 2px 15px;
+        padding: 7px 15px 10px;
+        
+        .infoName{
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 20px;
+            color:#000000;
+        }
+        .infoText{
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 20px;
+            color:#000000;
+            .infoTitle{
+                font-weight: 600;
+
+            }
+        }
     }
 }
