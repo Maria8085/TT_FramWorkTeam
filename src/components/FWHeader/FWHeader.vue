@@ -5,9 +5,11 @@ import BaseButtonTheme from '@/components/ui/BaseButtonTheme/BaseButtonTheme.vue
 
 <template>
   <header>
-    <div :class="Styles">
-      <img src="@/assets/images/Logo.png" alt="" />
+    <div class="container" :class="Styles.container">
+      <div :class="Styles.logoWrap">
+        <img src="@/assets/images/Logo.png" alt="" />
+      </div>
+      <BaseButtonTheme />
     </div>
-    <BaseButtonTheme />
   </header>
 </template>

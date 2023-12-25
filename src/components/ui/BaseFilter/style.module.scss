@@ -1,6 +1,11 @@
-.filter{
-    padding: 10px;
-    border:1px solid var(--accent-color);
-    border-radius: 7px;
-    background-color: var(--background-color-secondary);
+.filterWrap {
+    width: 100%;
+
+    .filter {
+        padding: 10px;
+        border: 1px solid var(--accent-color);
+        border-radius: 7px;
+        background-color: var(--background-color-secondary);
+        width: 100%;
+    }
 }

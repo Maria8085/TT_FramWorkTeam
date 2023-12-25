@@ -1,3 +1,5 @@
+@import '@/assets/index.scss';
+
 :global(:root) {
   --background-color-primary: #ffffff;
   --background-color-secondary: #FFFFFF;
@@ -35,4 +37,26 @@ body {
 
 p {
   color: var(--text-primary-color);
+}
+
+:global(.container) {
+  margin: 0 20px;
+}
+
+@include Tabel() {
+  :global(.container) {
+    margin: 0 34px;
+  }
+}
+
+@include Laptop() {
+  :global(.container) {
+    margin: 0 42px;
+  }
+}
+
+@include Desktop() {
+  :global(.container) {
+    margin: 0 123px;
+  }
 }

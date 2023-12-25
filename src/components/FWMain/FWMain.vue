@@ -6,7 +6,9 @@ import FWPictureList from '@/components/FWPictureList/FWPictureList.vue';
 
 <template>
   <main :class="Styles">
-    <FWFilters />
-    <FWPictureList />
+    <div class="container">
+      <FWFilters />
+      <FWPictureList />
+    </div>
   </main>
 </template>
