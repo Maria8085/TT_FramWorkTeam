@@ -7,4 +7,16 @@ const apiInstance = axios.create({
     }
 });
 
+// class paintingsAPI { 
+//     getPaintings () {
+      
+//     }
+// }
+
+// class authorsAPI { 
+//     getAuthors (ds) {
+//       dsdsdsdsd
+//     }
+// }
+
 export default apiInstance

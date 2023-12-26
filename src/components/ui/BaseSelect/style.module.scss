@@ -1,0 +1,76 @@
+.selectWrap {
+    width: 100%;
+
+    .select {
+        padding: 10px;
+        border: 1px solid var(--accent-color);
+        border-radius: 7px;
+        background-color: var(--background-color-secondary);
+        width: 100%;
+    }
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    height: 47px;
+    line-height: 47px;
+  }
+  
+  .custom-select .selected {
+    background-color: var(--background-color-secondary);
+    border-radius: 6px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding-left: 1em;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .custom-select .selected.open {
+    border: 1px solid var(--accent-color);
+    border-radius: 6px 6px 0px 0px;
+  }
+  
+  .custom-select .selected:after {
+    position: absolute;
+    content: "";
+    top: 22px;
+    right: 1em;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-color: var(--accent-color) transparent transparent transparent;
+  }
+  
+  .custom-select .items {
+    color: var(--accent-color);
+    border-radius: 0px 0px 6px 6px;
+    overflow: auto;
+    border-right: 1px solid var(--accent-color);
+    border-left: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+    position: absolute;
+    background-color: var(--background-color-secondary);
+    left: 0;
+    right: 0;
+    z-index: 1;
+    max-height: 200px;
+  }
+  
+  .custom-select .items div {
+    color: var(--accent-color);
+    padding-left: 1em;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .custom-select .items div:hover {
+    background-color: var(--accent-color);
+  }
+  
+  .selectHide {
+    display: none;
+  }

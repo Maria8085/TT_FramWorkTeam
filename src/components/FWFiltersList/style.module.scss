@@ -1,0 +1,15 @@
+@import '@/assets/mixins.scss';
+
+.filterList {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 0;
+    align-items: center;
+}
+
+@include Tablet() {
+    .filterList {
+        flex-direction: row;
+    }
+}

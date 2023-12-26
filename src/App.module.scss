@@ -1,4 +1,5 @@
-@import '@/assets/index.scss';
+@import '@/assets/mixins.scss';
+@import '@/assets/fonts/fonts.scss';
 
 :global(:root) {
   --background-color-primary: #ffffff;
@@ -22,7 +23,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-weight: normal;
+  font-weight: 13px;
+  font-family: "RobotoRegular";
 }
 
 html,
@@ -43,7 +45,7 @@ p {
   margin: 0 20px;
 }
 
-@include Tabel() {
+@include Tablet() {
   :global(.container) {
     margin: 0 34px;
   }

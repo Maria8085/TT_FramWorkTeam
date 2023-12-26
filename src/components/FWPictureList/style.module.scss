@@ -1,7 +1,28 @@
+@import '@/assets/mixins.scss';
+
 .pictureList {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 100%;
+    gap:10px;
     padding: 10px 0;
-    align-items: center;
+}
+
+@include Tablet{
+    .pictureList {
+        grid-template-columns: repeat(2, 1fr);
+        flex-wrap: wrap;
+    }
+}
+
+@include Laptop{
+    .pictureList {
+        grid-template-columns: repeat(3, 1fr);
+        flex-wrap: wrap;
+    }
+}
+
+@include Desktop{
+    .pictureList {
+        flex-wrap: wrap;
+    }
 }

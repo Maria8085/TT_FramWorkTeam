@@ -6,3 +6,13 @@ export type Paint = {
     locationId: number;
     name: string;
 }
+
+export type Author = {
+    id: number;
+    name: string;
+}
+
+export type Location = {
+    id: number;
+    location: string;
+}

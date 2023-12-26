@@ -1,10 +1,12 @@
+@import '@/assets/mixins.scss';
+
 .cardPicture {
     width: 100%;
     background-color: #777777;
     position: relative;
     border-radius: 25px;
     overflow: hidden;
-    padding-top: 73.25%;
+    padding-top: 73.21%;
 
     .picture {
         position: absolute;
@@ -56,5 +58,23 @@
 
     &:hover .infoText {
         opacity: 1;
+    }
+}
+
+@include Tablet{
+    .cardPicture {
+        padding-top: 73.24%;
+    }
+}
+
+@include Laptop{
+    .cardPicture {
+        padding-top: 76.67%;
+    }
+}
+
+@include Laptop{
+    .cardPicture {
+        padding-top: 76.39%;
     }
 }
