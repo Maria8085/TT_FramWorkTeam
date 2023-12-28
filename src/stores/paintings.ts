@@ -19,7 +19,7 @@ const usePaintingsStore = defineStore('paintingsStore', {
       _page?: number;
     }) {
       let queries = Object.entries(props)
-        .filter(([key, value]) => Boolean(value))
+        .filter(([_, value]) => Boolean(value))
         .map(([key, value]) => `${key}=${value}`)
         .join('&');
       if (queries) {

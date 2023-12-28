@@ -58,7 +58,11 @@ export default {
       }
     "
   >
-    <div :class="[Styles.selected, open ? Styles.open : '']" @click="open = !open">
+    <div
+      @keyup="open = !open"
+      :class="[Styles.selected, open ? Styles.open : '']"
+      @click="open = !open"
+    >
       <div :class="Styles.selectText">{{ fullAge ?? placeholder }}</div>
       <!-- <button @click="clear" :class="[Styles.buttonClose, fullAge && Styles.visible]" /> -->
     </div>

@@ -45,7 +45,7 @@ export default {
     <BaseSelect
       placeholder="Author"
       :options="authorsStore.authors.map((author) => ({ title: author.name, value: author.id }))"
-      :tabindex="1"
+      :tabindex="0"
       @input="setAuthor"
     />
     <BaseSelect
@@ -56,9 +56,9 @@ export default {
           value: location.id
         }))
       "
-      :tabindex="2"
+      :tabindex="0"
       @input="setLocation"
     />
-    <BaseSelectDate placeholder="Created" :tabindex="3" @input="setAge" />
+    <BaseSelectDate placeholder="Created" :tabindex="0" @input="setAge" />
   </div>
 </template>

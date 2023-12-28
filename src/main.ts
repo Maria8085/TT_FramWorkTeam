@@ -4,8 +4,9 @@ import App from './App.vue';
 
 const clickOutside = {
   beforeMount: (el: any, binding: any) => {
+    // eslint-disable-next-line no-param-reassign
     el.clickOutsideEvent = (event: Event) => {
-      if (!(el == event.target || el.contains(event.target))) {
+      if (!(el === event.target || el.contains(event.target))) {
         binding.value();
       }
     };

@@ -51,6 +51,10 @@ export default {
     <h2 :class="Styles.titleList" v-if="paintingsStore.paintings.length < 1">
       The paintings were not found
     </h2>
-    <BaseCardPicture :paint="paint" v-for="paint in paintingsStore.paintings" />
+    <BaseCardPicture
+      v-bind:key="paint.id"
+      :paint="paint"
+      v-for="paint in paintingsStore.paintings"
+    />
   </div>
 </template>

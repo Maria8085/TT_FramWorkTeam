@@ -13,6 +13,7 @@ defineProps<{
 <template>
   <div :class="Styles.inputWrap">
     <input
+      aria-label="field"
       :max="max"
       :min="min"
       :type="type ?? 'text'"

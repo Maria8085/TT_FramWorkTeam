@@ -33,17 +33,30 @@ export default {
 
 <template>
   <div :class="Styles.customSelect" :tabindex="tabindex" @blur="open = false">
-    <div :class="[Styles.selected, open ? Styles.open : '']" @click="open = !open">
+    <div
+      :class="[Styles.selected, open ? Styles.open : '']"
+      @keyup="open = !open"
+      @click="open = !open"
+    >
       <div :class="Styles.selectText">
         {{ options.find((option) => option.value === selected)?.title ?? placeholder }}
       </div>
-      <button @click="clear" :class="[Styles.buttonClose, selected ? Styles.visible : '']" />
+      <button
+        type="button"
+        @click="clear"
+        :class="[Styles.buttonClose, selected ? Styles.visible : '']"
+      />
     </div>
     <div :class="[Styles.items, !open ? Styles.selectHide : '']">
       <div
         v-for="(option, i) of options"
         :key="i"
         @click="
+          selected = option.value;
+          open = false;
+          $emit('input', option.value);
+        "
+        @keyup="
           selected = option.value;
           open = false;
           $emit('input', option.value);

@@ -4,7 +4,6 @@ import ArrowIcon from '@/assets/icons/ArrowIcon.vue';
 import Styles from './style.module.scss';
 import usePaintingsStore from '@/stores/paintings';
 import useFilterStore from '@/stores/filter';
-import type { Themes } from '@/types';
 
 export default {
   data() {
@@ -44,6 +43,23 @@ export default {
       return Number(this.filterStore.currantPage) >= Number(this.totalPages.length);
     }
   },
+  watch: {
+    'filterStore.title'() {
+      this.setPage(1);
+    },
+    'filterStore.authorId'() {
+      this.setPage(1);
+    },
+    'filterStore.locationId'() {
+      this.setPage(1);
+    },
+    'filterStore.created_gte'() {
+      this.setPage(1);
+    },
+    'filterStore.created_lte'() {
+      this.setPage(1);
+    }
+  },
   methods: {
     setPage(page: number) {
       this.filterStore.currantPage = page;
@@ -54,7 +70,7 @@ export default {
 </script>
 
 <template>
-  <div :class="Styles.pagination" v-if="pagesToShow.length > 0">
+  <div :class="Styles.pagination" v-if="pagesToShow.length > 2">
     <button
       type="button"
       @click="filterStore.currantPage = 1"

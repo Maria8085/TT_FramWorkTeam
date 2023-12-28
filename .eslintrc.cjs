@@ -19,7 +19,7 @@ module.exports = {
   rules: {
     semi: ['error', 'always'],
     quotes: ['error', 'single'],
-    'no-plusplus': 'off',
+    'object-shorthand': 'off',
     'prettier/prettier': [
       'error',
       {},
@@ -29,9 +29,11 @@ module.exports = {
         }
       }
     ],
-    'import/no-unresolved': 'error'
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off'
   },
   settings: {
+    'import/extensions': ['.ts', '.vue'],
     ...createAliasSetting({
       '@': `${path.resolve(__dirname, './src')}`
     })
