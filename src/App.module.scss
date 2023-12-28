@@ -1,21 +1,5 @@
-@import '@/assets/mixins.scss';
+@import '@/assets/variables.scss';
 @import '@/assets/fonts/fonts.scss';
-
-:global(:root) {
-  --background-color-primary: #ffffff;
-  --background-color-secondary: #FFFFFF;
-  --accent-color: #b3b3b3;
-  --text-primary-color: #000000;
-  --element-size: 4rem;
-  --el-hover: #464646;
-}
-
-:global(:root.dark-theme) {
-  --background-color-primary: #000000;
-  --background-color-secondary: #0C0C0C;
-  --accent-color: #ffffff;
-  --text-primary-color: #ffffff;
-}
 
 *,
 *::before,
@@ -24,7 +8,7 @@
   margin: 0;
   padding: 0;
   font-weight: 13px;
-  font-family: "RobotoRegular";
+  font-family: 'RobotoRegular', sans-serif;
 }
 
 html,
@@ -35,7 +19,6 @@ body {
 }
 
 /* Define styles for the root window with dark - mode preference */
-
 
 p {
   color: var(--text-primary-color);

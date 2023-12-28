@@ -1,14 +1,20 @@
-<script setup lang="ts">
+<script lang="ts">
+import FiltersList from '@/components/FiltersList/FiltersList.vue';
+import PictureList from '@/components/PictureList/PictureList.vue';
+import BasePagination from '@/components/ui/BasePagination/BasePagination.vue';
 import Styles from './style.module.scss';
-import FWFiltersList from '@/components/FWFiltersList/FWFiltersList.vue';
-import FWPictureList from '@/components/FWPictureList/FWPictureList.vue';
+
+export default {
+  components: { FiltersList, PictureList, BasePagination }
+};
 </script>
 
 <template>
-  <main :class="Styles">
+  <main>
     <div class="container">
-      <FWFiltersList />
-      <FWPictureList />
+      <FiltersList />
+      <PictureList />
+      <BasePagination />
     </div>
   </main>
 </template>

@@ -1,11 +1,20 @@
-.inputWrap {
-    width: 100%;
+@import '@/assets/variables.scss';
 
-    .input {
-        padding: 10px;
-        border: 1px solid var(--accent-color);
-        border-radius: 7px;
-        background-color: var(--background-color-secondary);
-        width: 100%;
-    }
+.inputWrap {
+  width: 100%;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+  background-color: var(--background-color-secondary);
+  width: 100%;
+  color: var(--text-primary-color);
+  font-size: 14px;
+
+  &:focus-visible {
+    border: var(--text-primary-color) solid 1px;
+    outline: none;
+  }
 }

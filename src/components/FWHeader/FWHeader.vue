@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Styles from './style.module.scss';
 import BaseButtonTheme from '@/components/ui/BaseButtonTheme/BaseButtonTheme.vue';
+import Styles from './style.module.scss';
 </script>
 
 <template>

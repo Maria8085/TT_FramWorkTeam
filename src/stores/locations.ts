@@ -2,10 +2,10 @@ import { defineStore } from 'pinia';
 import apiInstance from '@/api/index';
 import type { Location } from '@/types';
 
-const useLocationsStore = defineStore("locationsStore", {
+const useLocationsStore = defineStore('locationsStore', {
   state: () => ({
     loader: false,
-    locations: [] as Location[],
+    locations: [] as Location[]
   }),
   actions: {
     async getLocations() {
@@ -13,8 +13,8 @@ const useLocationsStore = defineStore("locationsStore", {
       const { data } = await apiInstance.get('/locations');
       this.locations = data;
       this.loader = false;
-    },
-  },
+    }
+  }
 });
 
 export default useLocationsStore;

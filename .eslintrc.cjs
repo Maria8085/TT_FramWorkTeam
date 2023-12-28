@@ -1,5 +1,7 @@
 /* eslint-env node */
 require('@rushstack/eslint-patch/modern-module-resolution');
+const createAliasSetting = require('@vue/eslint-config-airbnb/createAliasSetting');
+const path = require('node:path');
 
 module.exports = {
   root: true,
@@ -27,11 +29,11 @@ module.exports = {
         }
       }
     ],
-    "import/no-unresolved": "error",
+    'import/no-unresolved': 'error'
   },
   settings: {
     ...createAliasSetting({
-      "@": `${path.resolve(__dirname, "./src")}`,
-    }),
-  },
+      '@': `${path.resolve(__dirname, './src')}`
+    })
+  }
 };

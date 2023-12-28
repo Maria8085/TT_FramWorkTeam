@@ -1,154 +1,98 @@
-<template>
-  <ul class="pagination">
-    <li class="pagination-item">
-      <button type="button" @click="onClickFirstPage" :disabled="isInFirstPage" aria-label="Go to first page">
-        First
-      </button>
-    </li>
+<script lang="ts">
+import DoubleArrow from '@/assets/icons/DoubleArrow.vue';
+import ArrowIcon from '@/assets/icons/ArrowIcon.vue';
+import Styles from './style.module.scss';
+import usePaintingsStore from '@/stores/paintings';
+import useFilterStore from '@/stores/filter';
+import type { Themes } from '@/types';
 
-    <li class="pagination-item">
-      <button type="button" @click="onClickPreviousPage" :disabled="isInFirstPage" aria-label="Go to previous page">
-        Previous
-      </button>
-    </li>
-
-    <li v-for="page in pages" class="pagination-item">
-      <button type="button" @click="onClickPage(page.name)" :disabled="page.isDisabled"
-        :class="{ active: isPageActive(page.name) }" :aria-label="`Go to page number ${page.name}`">
-        {{ page.name }}
-      </button>
-    </li>
-
-    <li class="pagination-item">
-      <button type="button" @click="onClickNextPage" :disabled="isInLastPage" aria-label="Go to next page">
-        Next
-      </button>
-    </li>
-
-    <li class="pagination-item">
-      <button type="button" @click="onClickLastPage" :disabled="isInLastPage" aria-label="Go to last page">
-        Last
-      </button>
-    </li>
-  </ul>
-</template>
-
-<script>
 export default {
-  name: 'pagination',
-  template: '#pagination',
-  props: {
-    maxVisibleButtons: {
-      type: Number,
-      required: false,
-      default: 3
-    },
-    totalPages: {
-      type: Number,
-      required: true
-    },
-    total: {
-      type: Number,
-      required: true
-    },
-    perPage: {
-      type: Number,
-      required: true
-    },
-    currentPage: {
-      type: Number,
-      required: true
-    },
-  },
-  computed: {
-    startPage() {
-      if (this.currentPage === 1) {
-        return 1;
-      }
-
-      if (this.currentPage === this.totalPages) {
-        return this.totalPages - this.maxVisibleButtons + 1;
-      }
-
-      return this.currentPage - 1;
-
-    },
-    endPage() {
-
-      return Math.min(this.startPage + this.maxVisibleButtons - 1, this.totalPages);
-
-    },
-    pages() {
-      const range = [];
-
-      for (let i = this.startPage; i <= this.endPage; i += 1) {
-        range.push({
-          name: i,
-          isDisabled: i === this.currentPage
-        });
-      }
-
-      return range;
-    },
-    isInFirstPage() {
-      return this.currentPage === 1;
-    },
-    isInLastPage() {
-      return this.currentPage === this.totalPages;
-    },
-  },
-  methods: {
-    onClickFirstPage() {
-      this.$emit('pagechanged', 1);
-    },
-    onClickPreviousPage() {
-      this.$emit('pagechanged', this.currentPage - 1);
-    },
-    onClickPage(page) {
-      this.$emit('pagechanged', page);
-    },
-    onClickNextPage() {
-      this.$emit('pagechanged', this.currentPage + 1);
-    },
-    onClickLastPage() {
-      this.$emit('pagechanged', this.totalPages);
-    },
-    isPageActive(page) {
-      return this.currentPage === page;
-    },
-  }
-};
-
-new Vue({
-  el: '#app',
-  name: 'app',
-  components: {
-    pagination: Pagination,
-  },
   data() {
     return {
-      currentPage: 1,
+      Styles,
+      paintingsStore: usePaintingsStore(),
+      filterStore: useFilterStore()
     };
   },
-  methods: {
-    onPageChange(page) {
-      this.currentPage = page;
+  computed: {
+    totalPages() {
+      return Array.from(
+        {
+          length: Math.ceil(Number(this.paintingsStore.total) / Number(this.filterStore.limit))
+        },
+        (_, index) => index + 1
+      );
+    },
+    pagesToShow() {
+      const min = Math.max(
+        0,
+        this.filterStore.currantPage === this.totalPages.length
+          ? this.filterStore.currantPage - 3
+          : this.filterStore.currantPage - 2
+      );
+      const max = Math.min(
+        this.totalPages.length,
+        this.filterStore.currantPage === 1 ? 3 : this.filterStore.currantPage + 1
+      );
+      const a = this.totalPages.slice(min, max);
+      return a;
+    },
+    startDisabled() {
+      return Number(this.filterStore.currantPage) <= 1;
+    },
+    endDisabled() {
+      return Number(this.filterStore.currantPage) >= Number(this.totalPages.length);
     }
   },
-});
+  methods: {
+    setPage(page: number) {
+      this.filterStore.currantPage = page;
+    }
+  },
+  components: { DoubleArrow, ArrowIcon }
+};
 </script>
 
-<style>
-.pagination {
-  list-style-type: none;
-}
+<template>
+  <div :class="Styles.pagination" v-if="pagesToShow.length > 0">
+    <button
+      type="button"
+      @click="filterStore.currantPage = 1"
+      :class="[Styles.button, startDisabled ? Styles.buttonDisabled : '']"
+    >
+      <DoubleArrow />
+    </button>
+    <button
+      type="button"
+      @click="filterStore.currantPage = Math.max(filterStore.currantPage - 1, 1)"
+      :class="[Styles.button, startDisabled ? Styles.buttonDisabled : '']"
+    >
+      <ArrowIcon />
+    </button>
 
-.pagination-item {
-  display: inline-block;
-}
+    <button
+      type="button"
+      :class="[Styles.button, page === filterStore.currantPage ? Styles.currentPage : '']"
+      @click="setPage(page)"
+      v-bind:key="page"
+      v-for="page in pagesToShow"
+    >
+      {{ page }}
+    </button>
 
-.active {
-  background-color: #4AAE9B;
-  color: #ffffff;
-}
-</style>
+    <button
+      type="button"
+      @click="filterStore.currantPage = Math.min(filterStore.currantPage + 1, totalPages.length)"
+      :class="[Styles.button, endDisabled ? Styles.buttonDisabled : '']"
+    >
+      <ArrowIcon />
+    </button>
+    <button
+      type="button"
+      @click="filterStore.currantPage = totalPages.length"
+      :class="[Styles.button, endDisabled ? Styles.buttonDisabled : '']"
+    >
+      <DoubleArrow />
+    </button>
+  </div>
+</template>
